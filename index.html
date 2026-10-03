@@ -14,8 +14,8 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f8f7f9;
-  color: #2d2332;
+  background: #faf8fc;
+  color: #201a23;
 }
 
 header {
@@ -23,18 +23,17 @@ header {
   color: white;
   text-align: center;
   padding: 45px 20px;
-  border-bottom: 5px solid #a77bce;
+  border-bottom: 4px solid #a875c9;
 }
 
 .logo {
   font-family: Georgia, serif;
-  font-size: 34px;
-  margin-bottom: 8px;
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
 .subtitle {
-  color: #d8bce9;
-  font-size: 16px;
+  color: #d9bce8;
 }
 
 .container {
@@ -45,41 +44,129 @@ header {
 
 .card {
   background: white;
-  padding: 25px;
+  padding: 24px;
   margin-bottom: 20px;
-  border-radius: 22px;
-  box-shadow: 0 8px 25px #00000012;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
 h2 {
   font-family: Georgia, serif;
-  margin-top: 0;
-  color: #33243b;
-  font-size: 30px;
+  color: #40284b;
 }
 
 label {
   display: block;
+  margin-top: 18px;
+  margin-bottom: 7px;
   font-weight: bold;
-  margin: 18px 0 8px;
-  font-size: 18px;
 }
 
-select,
-input {
+input,
+select {
   width: 100%;
-  padding: 17px;
-  border: 1px solid #d8d1dc;
-  border-radius: 18px;
-  font-size: 17px;
+  padding: 14px;
+  border: 1px solid #d7c9dc;
+  border-radius: 12px;
+  font-size: 16px;
   background: white;
 }
 
 .horarios {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 10px;
 }
 
 .horario {
- 
+  padding: 14px;
+  border: 1px solid #a875c9;
+  border-radius: 12px;
+  background: white;
+  color: #40284b;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.horario.selecionado {
+  background: #40284b;
+  color: white;
+}
+
+.agendar {
+  width: 100%;
+  margin-top: 22px;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  background: #40284b;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.info {
+  text-align: center;
+  line-height: 1.7;
+}
+
+.instagram {
+  color: #80509d;
+  font-weight: bold;
+}
+
+footer {
+  background: #17131a;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  font-size: 13px;
+}
+
+@media (max-width: 500px) {
+  .logo {
+    font-size: 28px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Mayara Olivier Nails</div>
+  <div class="subtitle">
+    Beleza, delicadeza e sofisticação ✨
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Agende seu horário 💅🏻</h2>
+
+    <label>Procedimento</label>
+
+    <select id="procedimento">
+      <option value="">Escolha o procedimento</option>
+      <option>Alongamento de unhas</option>
+      <option>Manutenção</option>
+      <option>Banho de gel</option>
+      <option>Unha em gel</option>
+      <option>Unha decorada</option>
+    </select>
+
+    <label>Data</label>
+
+    <input type="date" id="data">
+
+    <label>Horário</label>
+
+    <div class="horarios">
+
+      <button type="button" class="horario" onclick="selecionarHorario('09:00', this)">
+        09:00
+      </button>
+
+      <button type="button" class="horario" onclick="selecionarHorario('11:00', this)">
+       
