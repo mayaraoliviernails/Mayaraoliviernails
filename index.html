@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mayara Olivier Nails</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#faf9fc;
+color:#17131a;
+}
+
+header{
+background:#17131a;
+color:white;
+text-align:center;
+padding:45px 20px;
+border-bottom:5px solid #a77bce;
+}
+
+.logo{
+font-family:Georgia,serif;
+font-size:34px;
+margin-bottom:8px;
+}
+
+.subtitle{
+color:#d8bce9;
+font-size:15px;
+}
+
+.container{
+max-width:650px;
+margin:auto;
+padding:22px;
+}
+
+.card{
+background:white;
+padding:25px;
+margin-bottom:20px;
+border-radius:22px;
+box-shadow:0 8px 25px #00000012;
+}
+
+h2{
+font-family:Georgia,serif;
+margin-top:0;
+color:#33243b;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin:15px 0 7px;
+}
+
+input,select{
+width:100%;
+padding:14px;
+border:1px solid #ddd3e2;
+border-radius:12px;
+font-size:16px;
+background:white;
+}
+
+.horarios{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+
+.horario{
+padding:13px;
+border:1px solid #b993d0;
+border-radius:12px;
+background:white;
+cursor:pointer;
+font-weight:bold;
+}
+
+.horario.selecionado{
+background:#6d397f;
+color:white;
+}
+
+.botao{
+width:100%;
+padding:16px;
+margin-top:20px;
+border:0;
+border-radius:14px;
+background:#6d397f;
+color:white;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.botao:hover{
+background:#512961;
+}
+
+.info{
+text-align:center;
+line-height:1.7;
+}
+
+.insta{
+color:#6d397f;
+font-weight:bold;
+}
+
+footer{
+text-align:center;
+padding:25px;
+font-size:13px;
+color:#777;
+}
+
+@media(max-width:500px){
+.logo{font-size:29px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">Mayara Olivier Nails</div>
+<div class="subtitle">
+Beleza, delicadeza e sofisticação em cada detalhe ✨
+</div>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Agende seu horário 💅🏻</h2>
+
+<label>Procedimento</label>
+
+<select id="procedimento">
+<option value="">Escolha o procedimento</option>
+<option>Alongamento de unhas</option>
+<option>Manutenção</option>
+<option>Banho de gel</option>
+<option>Esmaltação</option>
+<option>Outro</option>
+</select>
+
+<label>Escolha a data</label>
+
+<input type="date" id="data">
+
+<label>Escolha o horário</label>
+
+<div class="horarios">
+
+<button class="horario" onclick="horario('09:00',this)">09:00</button>
+<button class="horario" onclick="horario('11:00',this)">11:00</button>
+<button class="horario" onclick="horario('13:30',this)">13:30</button>
+<button class="horario" onclick="horario('15:30',this)">15:30</button>
+<button class="horario" onclick="horario('17:00',this)">17:00</button>
+
+</div>
+
+<label>Seu nome</label>
+
+<input id="nome" placeholder="Digite seu nome">
+
+<label>WhatsApp</label>
+
+<input id="whatsapp" placeholder="(21) 99999-9999">
+
+<button class="botao" onclick="agendar()">
+Solicitar agendamento
+</button>
+
+</div>
+
+<div class="card info">
+
+<strong>📍 Atendimento</strong><br>
+
+Rua Tururis, 2 – Parque Fluminense<br>
+Final da Praça do Galo
+
+<br><br>
+
+Instagram:<br>
+<span class="insta">@mayaraolivier.nails</span>
+
+<br><br>
+
+WhatsApp:<br>
+<strong>(21) 97094-2406</strong>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Mayara Olivier Nails
+</footer>
+
+<script>
+
+let horarioEscolhido="";
+
+function horario(hora,botao){
+
+horarioEscolhido=hora;
+
+document.querySelectorAll(".horario")
+.forEach(b=>b.classList.remove("selecionado"));
+
+botao.classList.add("selecionado");
+
+}
+
+function agendar(){
+
+let procedimento=document.getElementById("procedimento").value;
+let data=document.getElementById("data").value;
+let nome=document.getElementById("nome").value;
+let whatsapp=document.getElementById("whatsapp").value;
+
+if(!procedimento || !data || !horarioEscolhido || !nome || !whatsapp){
+
+alert("Por favor, preencha todos os campos e escolha um horário.");
+
+return;
+
+}
+
+let dataFormatada=new Date(data+"T12:00:00")
+.toLocaleDateString("pt-BR");
+
+let mensagem=
+"Olá, Mayara! Gostaria de solicitar um agendamento.%0A%0A"+
+"Nome: "+encodeURIComponent(nome)+"%0A"+
+"Procedimento: "+encodeURIComponent(procedimento)+"%0A"+
+"Data: "+encodeURIComponent(dataFormatada)+"%0A"+
+"Horário: "+encodeURIComponent(horarioEscolhido)+"%0A"+
+"WhatsApp: "+encodeURIComponent(whatsapp);
+
+window.open(
+"https://wa.me/5521970942406?text="+mensagem,
+"_blank"
+);
+
+}
+
+</script>
+
+</body>
+</html>
